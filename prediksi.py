@@ -6,6 +6,8 @@ import glob
 import cv2
 import math
 import xlsxwriter
+import numpy as np
+import matplotlib.pyplot as plt
 #%%
 df = pd.read_csv("data_film1.csv", sep=";", encoding="iso-8859-1")
 df['Pendapatan_int'] = df['Pendapatan'].str.replace(".","")
@@ -26,7 +28,7 @@ for i in np.arange(3):
      img = glob.glob(path[i])[0]
      # imgplot = plt.imshow(testImagesX[i], interpolation='nearest')
      plt.imshow(cv2.imread(img))
-     plt.suptitle("{} {} ({})".format(index,df['Judul'][i],df['Pendapatan'][i]))
+     plt.suptitle("{} {} ({})".format(i,df['Judul'][i],df['Pendapatan'][i]))
      plt.title("Prediksi : {}".format(dataset.formatangka(math.floor(df['Hasil_Prediksi'][i]))))
      plt.show()
 
